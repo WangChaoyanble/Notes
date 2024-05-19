@@ -1,3 +1,4 @@
+# Gradient descent
 One variable gradient decent:
 
 $$x_{new}=x_{old}-\alpha \nabla_xf(x_{old})$$  

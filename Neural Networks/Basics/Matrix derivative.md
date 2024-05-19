@@ -1,3 +1,4 @@
+# Matix derivative
 **This notes discribes the following case:**
 
 $x$ is a vector variable while $f(x)$ is a constant like: $f(x), x=[x_1,x_2,...x_n]^T$
