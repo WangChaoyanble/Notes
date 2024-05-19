@@ -19,7 +19,9 @@ $$X=\begin{bmatrix}
      ...&...&...&...\\
     x_0^{(m)}&x_1^{(m)}&...&x_{n-1}^{(m)}
     
-\end{bmatrix},y'=[y_0,y_1,...,y_{n-1}]^T$$
+\end{bmatrix},y'=[y_0,y_1,...,y_{n-1}]^T
+$$
+
 We are minimizing: $g(a)=||Xa-y'||^2$
 
 $$\begin{align}
