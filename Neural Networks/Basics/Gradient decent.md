@@ -45,7 +45,7 @@ There are two ways that we can solve:
   So: $a=(X^TX)^{-1}X^Ty'$
 
 
-Below is a python code implementing gradient descent:
+Below is a python code implementing gradient descent: it's more efficient to do gradient descent when $X$ is large.
 ```python
 import numpy as np
 # Gradient descent
@@ -68,17 +68,16 @@ def linear_regression(X,y,alpha):
 
 # Solve equation
 def regression(X,y):
-    return np.linalg.inv(X.T@X)@X.T@y
+    return np.linalg.pinv(X.T@X)@X.T@y
 
 X=np.array([[1,2,3],[1,5,6]])
 y=np.array([[1.],[2.]])
 alpha=0.001
-
-print(linear_regression(X,y,alpha))
-print(regression(X,y))
-
-
-   
-
+r1=linear_regression(X,y,alpha)
+r2=regression(X,y)
+print("Gradient descent result1:\n",r1)
+print("Solve equation result2:\n",r2)
+print("result1 loss:",compute_cost(X,y,r1))
+print("result2 loss:",compute_cost(X,y,r2))
 
 ```
