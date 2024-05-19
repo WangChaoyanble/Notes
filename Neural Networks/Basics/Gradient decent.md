@@ -12,7 +12,7 @@ Example of muti-varible linear regression:
 Consider the following equation:
 $$f(x)=a_0+a_1x_1+...+a_{n-1}x_{n-1}=[a_0,a_1,...,a_{n-1}][x_0,x_1,x_2,...,x_{n-1}]^T=a^Tx,x_0=1$$
 
-There are $m$ observations: 
+There are $m$ observations:  
 
 $$X=\begin{bmatrix} 
     x_0^{(1)}&x_1^{(1)}&...&x_{n-1}^{(1)}\\
