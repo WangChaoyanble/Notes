@@ -25,8 +25,11 @@ long long quick_pow(LL a,LL b,LL p)
 
 **Some principles of modulo:**
 
-$(a+b)\%p=(a\%p+b\%p)\%p    \\
-(a-b)\%p=(a\%p-b\%p)\%p    \\
-(a*b)\%p=(a\%p * b\%p)\%p  \\
-a^b\%p=((a\%p)^b)\%p$
+$(a+b)\%p=(a\%p+b\%p)\%p$
+
+$(a-b)\%p=(a\%p-b\%p)\%p$
+
+$(a*b)\%p=(a\%p * b\%p)\%p$  
+
+$a^b\%p=((a\%p)^b)\%p$
 
