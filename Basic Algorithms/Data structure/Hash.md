@@ -19,12 +19,11 @@ Implement the function in C++, below shows how to search, insert and delete valu
 
 ```c++
 #include<iostream>
-using namespace std;
-#define SIZE 10
+#define SIZE 20
 
 struct Data 
 {
-   int data;
+   int value;
    int key;
 };
 
@@ -83,4 +82,23 @@ bool delete_(int key)
     return true;
     
 }
+int main()
+{
+    insert(10, 20);
+    insert(30, 10);
+    Data *d=search(10);
+    std::cout<<d->value<<std::endl;
+    d=search(30);
+    std::cout<<d->value<<std::endl;
+    std::cout<<search(11)<<std::endl;
+    delete_(30);
+    std::cout<<search(30);
+
+    return 0;
+}
 ```
+
+**References:**
+
+[Hash Table Data structure
+](https://www.tutorialspoint.com/data_structures_algorithms/hash_data_structure.html)

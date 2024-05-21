@@ -31,19 +31,21 @@ $$\begin{align}
 \end{align}$$
 
 There are two ways that we can solve:
-- Gradient descent:
+## Gradient descent:
 
-    Gradient: $\nabla_ag(a)=2X^TXa-2X^Ty'$
+Gradient: $\nabla_ag(a)=2X^TXa-2X^Ty'$
 
-    So that we can use gradient descent:
-    $$a_{new}=a_{old}-\alpha \nabla_ag(a_{old})$$
+So that we can use gradient descent:
 
-- Solve the equation:
+$$a_{new}=a_{old}-\alpha \nabla_ag(a_{old})$$
+
+## Solve the equation:
   
-  $Xa$ could be considered as the column space of $X$, so when $Xa-y'$ is orthogonal to the column space of $X$ that we get the minimum of $g(a)$, so we have the equation below:
-  $$X^T(Xa-y')=0$$ 
+$Xa$ could be considered as the column space of $X$, so when $Xa-y'$ is orthogonal to the column space of $X$ that we get the minimum of $g(a)$, so we have the equation below:
 
-  So: $a=(X^TX)^{-1}X^Ty'$
+$$X^T(Xa-y')=0$$ 
+
+So: $a=(X^TX)^{-1}X^Ty'$
 
 
 Below is a python code implementing gradient descent: it's more efficient to do gradient descent when $X$ is large.
