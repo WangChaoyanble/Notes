@@ -24,33 +24,19 @@ $$ \left\{
 \frac{w^Tx+b}{||w||d}&\ge 1,y=1 \\
 \frac{w^Tx+b}{||w||d}&\le -1,y=-1\\
 \end{aligned}
-\right. \\
-
-$$
+\right. \\$$
 
 我们令$||w||d=1$得到:
 
-$$
-
-(w^Tx+b)y \ge1
-
-$$
+$$(w^Tx+b)y \ge1$$
 
 特别地，当$x$是支持向量时：
 
-$$
-
-(w^Tx+b)y =1
-
-$$
+$$(w^Tx+b)y =1$$
 
 那么支持向量$x$到超平面的距离：
 
-$$
-
-d=\frac{|w^Tx+b|}{||w||}=\frac{(w^Tx+b)y}{||w||}=\frac{1}{||w||}
-
-$$
+$$d=\frac{|w^Tx+b|}{||w||}=\frac{(w^Tx+b)y}{||w||}=\frac{1}{||w||}$$
 
 我们的目标就是最大化支持向量到超平面的距离$d$,即在$(w^Tx_i+b)y_i \ge1$的条件下最小化$\frac{1}{2}||w||^2$
 
