@@ -28,12 +28,15 @@ We assume that $w=e^{\frac{2\pi i}{n}}$, $n=2^s,s\ge0$:
 
     $P(w^{j+\frac{n}{2}})=P_e(w^{2j})-w^jP_o(w^{2j})$ ...②
 
-From formula ①②, we know that we only need to calculate$P_e(w^{2j}),P_o(w^{2j})$ so that we get $[P(w_0),P(w_1),...,P(w_{n-1})]$.
+From formula ①②, we know that we only need to calculate $P_e(w^{2j}),P_o(w^{2j})$ so that we get $[P(w_0),P(w_1),...,P(w_{n-1})]$.
 
-The recursion method can be used for the calculation of $P_e (w ^ {2j}), P_o (w ^ {2j})$
+The recursion method can be used for the calculation of $P_e (w ^ {2j}), P_o (w ^ {2j})$.
 
 
-```c
+Implemetation of C++:
+
+## Recursive
+```c++
 vector<complex<double>> fft(vector<complex<double>> coeff)
 {
     int n=coeff.size();
@@ -59,3 +62,5 @@ vector<complex<double>> fft(vector<complex<double>> coeff)
 }
 
 ```
+
+## None-recursive

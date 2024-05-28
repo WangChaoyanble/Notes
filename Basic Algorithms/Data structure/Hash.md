@@ -1,13 +1,13 @@
 # Hash functions
 
-We have data stored in such form: $(key,value)$, the $key$ is identical and can mark the correspond $value$.
+We have data stored in such form: $(key,value)$, the $key$ is unique and can mark the correspond $value$.
 
 Hash functions could quickly compute the address that the value is stored:
 $$addr=Hash(key)$$
 So that we can often get the value with the key in $O(1)$ time complexity.
 
 ## Linear Probing
-A simple hash functino could be $hash(key)=key \% SIZE$, $SIZE$ is the capacity of the storage.
+A simple hash functino could be $hash(key)=key\%SIZE$, $SIZE$ is the capacity of the storage.
 
 We assume that $SIZE=10$, and some key-values: $(1,100),(2,98),(3,16),(4,10),(13,34)$, with the hash function above, their addresses are as follows: $1,2,3,4,3$.
 
@@ -15,7 +15,12 @@ We could see conflicts. So we use linear probing to solve that: **Search the nex
 
 The $(13,34)$ conflicts so we search the next empty space is 5, their address are $1,2,3,4,5$.
 
-Implement the function in C++, below shows how to search, insert and delete values:
+## Open Hashing
+
+We could open a linked list in each place, put key-values in the linked list.
+![alt text](../../assets/MarkdownImg/image-1.png)
+
+Implement linear probing in C++, below shows how to search, insert and delete values:
 
 ```c++
 #include<iostream>
