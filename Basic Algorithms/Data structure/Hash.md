@@ -7,7 +7,7 @@ $$addr=Hash(key)$$
 So that we can often get the value with the key in $O(1)$ time complexity.
 
 ## Linear Probing
-A simple hash functino could be $hash(key)=key\;\%\; SIZE$, $SIZE$ is the capacity of the storage.
+A simple hash functino could be $hash(key)=key\;\text{mod}\; SIZE$, $SIZE$ is the capacity of the storage.
 
 We assume that $SIZE=10$, and some key-values: $(1,100),(2,98),(3,16),(4,10),(13,34)$, with the hash function above, their addresses are as follows: $1,2,3,4,3$.
 
