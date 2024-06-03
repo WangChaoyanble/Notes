@@ -6,7 +6,7 @@ $$Q=\begin{bmatrix}q_1&q_2&...&q_n\end{bmatrix}$$
 
 $q_i^Tq_j=1$ if $i=j$, else $q_i^Tq_j=0$. Then we have: $Q^T=Q^{-1}$.
 
-Proof:
+**Proof:**
 
 $$Q^T=\begin{bmatrix}q_1^T \\
 q_2^T\\
@@ -29,6 +29,23 @@ q_n \cdot q_1 & q_n \cdot q_2 & \cdots & q_n \cdot q_n
 
 Projection matrix: $P=A(A^TA)^{-1}A^T$
 
-Left multiply $x$ by $P$ so that we project $x$ to the column space of $A$: $Px$
+Left multiply $x$ by $P$ so that we project $b$ to the column space of $A$: $Pb$
 
-Especially when $A$ is a vector $a$ we have $P=\frac{aa^T}{a^Ta}$, then $Px=\frac{aa^T}{a^Ta}x=\frac{a(a^Tx)}{a^Ta}=\frac{a^Tx}{a^Ta}a$
+Especially when $A$ is a vector $a$ we have $P=\frac{aa^T}{a^Ta}$, then $Pb=\frac{aa^T}{a^Ta}b=\frac{a(a^Tb)}{a^Ta}=\frac{a^Tb}{a^Ta}a$.
+
+**Proof:**
+
+$Ax$ is a vector in the column space of $A$, denoted as $C(A)$then we must have $Ax-b$ that is perpendicular to the $C(A)$, so $Ax-b$ is in $N(A^T)$:
+
+$$\begin{align}
+A^T(Ax-b)&=0\\
+\Rightarrow x&=(A^TA)^{-1}A^Tb 
+\end{align}
+$$
+
+Then $Ax=A(A^TA)^{-1}A^Tb$ is the projection vector of $b$, so we denote $P=A(A^TA)^{-1}A^T$ as the projection matrix.
+
+Four Subspaces:
+
+![alt text](../../assets/MarkdownImg/image-5.png)
+
