@@ -10,6 +10,7 @@
 ![alt text](../../assets/MarkdownImg/image-3.png)
 
  $C$ consists of independent columns of A, columns of R can rebuild the matrix $C$ as shown above. Below is another version:
+ 
 ![alt text](../../assets/MarkdownImg/image-4.png)
 
 ## $A=LU$
