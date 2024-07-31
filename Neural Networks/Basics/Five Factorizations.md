@@ -20,6 +20,18 @@
 ## $S=Q\Lambda Q^T$
 
 ## $A=U\Sigma V^T$
+
+
+### Change of basis
+Orthonormal basis of vector $x$ is $I(n×n)$, another basis is $W(n×n)$.
+
+We have $x=Wc$, $c$ is the new coordinate of $x$ under new basis $W$
+
+Especially when $W$ is orthonormal basis we have $W^TW=I$, so the equation becomes like: $c=W^{-1}x=W^Tx$.
+
+We can easily get the new coordinate.
+
+
 **Refernces**
 
 [The Art of Linear Algebra](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra)
