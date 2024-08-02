@@ -4,6 +4,9 @@ $next[i]=j$ means that a substring(*not starting with the first char*) ends with
 
 How to calculate array $next[]$：
 
+We assume a array $arr[]$ and $next[i]=j$, for $next[i+1]$, we have two scenarios：
+- If $arr[i+1]==arr[j+1]$, then $next[i+1]=j+1$
+- If $arr[i+1]!=arr[j+1]$, if $arr[i+1]==arr[arr[j]+1]$, $next[i+1]=next[j]+1$, or $arr[i+1]=0$
 
 ```c++
 // s[] is long tring (length n)，p[] is pattern string (length m), ne[] is the next array
