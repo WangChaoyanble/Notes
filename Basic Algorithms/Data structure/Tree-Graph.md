@@ -1,5 +1,5 @@
 # Binary Tree
-## Level traveral
+## Level Traveral
 ```c++
 void LevelOrder(TreeNode *T)
 {
@@ -16,8 +16,8 @@ void LevelOrder(TreeNode *T)
 }
 ```
 
-## Binary Tree non-recursive traversal
-### In-order and pre-order
+## Binary Tree Non-recursive Traversal
+### In-order and Pre-order
 ```c++
 void InOrder(TreeNode* T)
 {
@@ -77,7 +77,7 @@ void PostOrder(TreeNode *T)
 }
 
 ```
-## Construct a binary tree
+## Construct A Binary Tree
 ### From Postorder and Inorder
 ```c++
 int inorder[N];
@@ -104,7 +104,7 @@ TreeNode * buildTree(int l1,int r1,int l2,int r2)//l1,r1 preorder,l2,r2 inorder
 In a binary tree with n nodes, there are n+1 null pointer, so these can be used for pointing the predecessor or successor of the node.
 
 If a node don't has left child, the left child pointer points to it's predecessor. And so the right pointer points to the successor.
-
+### Create Threaded Binary Tree
 ```c++
 struct ThreadNode{
     int val;
@@ -114,11 +114,12 @@ struct ThreadNode{
 }
 
 //Construct thread tree
-void InThread(ThreadNode *T,ThreadNode *P) //T is the current visiting node and P is the recent visited node.
+ThreadNode *P=NULL;//used for storing predecessor
+void InThread(ThreadNode *T) //T is the current visiting node and P is the recent visited node.
 {
     if(T)
     {
-        InThread(T->left,P);
+        InThread(T->left);
         if(!T->left)
         {
             T->left=P;
@@ -130,7 +131,7 @@ void InThread(ThreadNode *T,ThreadNode *P) //T is the current visiting node and 
             P->rtag=1;
         }
         P=T;
-        InThread(T->right,P);
+        InThread(T->right);
     }
 }
 
@@ -145,4 +146,30 @@ void CreateInThread(ThreadNode *T)
     }
 }
 
+```
+### Traverse Threaded Binary Tree
+Find the first in-order node of threaded tree T:
+```c++
+ThreadNode * FirstNode(ThreadNode *T)
+{
+    if(!T) return NULL;
+    while(!T->ltag) T=T->left;
+    return T;
+}
+```
+Find the in-order succussor of threaded tree T:
+```c++
+ThreadNode *NextNode(ThreadNode *T)
+{
+    if(T->rtag) return T->right;
+    else return FirstNode(T);
+}
+```
+In-order traversal of threaded tree:
+```c++
+void ThreadInOrder(ThreadNode *T)
+{
+    for(ThreadNode *p=FirstNode(T);p!=NULL;p=NextNode(p))
+        printf("%d ",p->val);
+}
 ```
