@@ -29,3 +29,20 @@ TreeNode * buildTree(int l,int r)
     return p;
 }
 ```
+
+But for complete binary tree, we can use an array to store.
+
+For all nodes we can mark them from $1$ to $n$ in level order, for node $i$, its left child is $2i$, right child is $2i+1$ and its parent is $i/2$. 
+
+```c++
+const int N = 1010;
+int arr[N], inorder[N];
+int n, idx=0;
+void InorderBuild(int root)
+{
+    if(root > n) return;
+    InorderBuild(root * 2);
+    inorder[root] = arr[idx++];
+    InorderBuild(root * 2 + 1);
+}
+```
