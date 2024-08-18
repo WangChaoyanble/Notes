@@ -18,18 +18,18 @@ bool st[N];     // Whether each vertex is in the MST
 
 int prim()
 {
-    memset(dist, 0x3f, sizeof dist);
+    memset(dist, INF, sizeof dist);
 
     int res = 0;// return the sum of the MST's weight
     for (int i = 0; i < n; i ++ )
     {
         int t = -1;
         
-        for (int j = 1; j <= n; j ++ )//find the minimum dist[] that is not in the MST set.
+        for (int j = 1; j <= n; j ++ )//find the minimum dist[t] where t is not in the MST set.
             if (!st[j] && (t == -1 || dist[t] > dist[j]))
                 t = j;
 
-        if (i && dist[t] == INF) return INF;//
+        if (i && dist[t] == INF) return INF;//if the minimum dist[t] is INF, means the graph is not connected.
 
         if (i) res += dist[t];//add the point to the set.
         st[t] = true;
@@ -43,6 +43,9 @@ int prim()
 ```
 
 ## Kruskal's Algorithm
+- Sort all edges in increasing order.
+- Enumerate the edges, and if the vertices can't connect without that edge, add it to the MST set.
+
 
 ```c++
 

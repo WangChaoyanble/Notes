@@ -13,14 +13,14 @@ int find(int x)
     return p[x];
 }
 
-// Initialization:
+// Initialization: set all vertices point to themselves.
 void init()
 {
     for (int i = 1; i <= n; i ++ ) 
         p[i] = i;
 }
 
-// Unify the two sets where A and B belong to:
+// Unify the two sets where point a and b belong to:
 void unite(int a,int b)
 {
     p[find(a)] = find(b);
