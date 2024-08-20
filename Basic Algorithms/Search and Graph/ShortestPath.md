@@ -53,8 +53,8 @@ int bellman_ford()
 {
     memset(dist, 0x3f, sizeof dist);
     dist[1] = 0;
-    //If we still have dist[b]>dist[a]+w in the nth  iteration
-    // 如果第n次迭代仍然会松弛三角不等式，就说明存在一条长度是n+1的最短路径，由抽屉原理，路径中至少存在两个相同的点，说明图中存在负权回路。
+    //If we still have dist[b]>dist[a]+w in the nth iteration, it indicates that there exists a shortest path with a length of n+1，suggesting the existence of a negative-weight cycle in the graph.
+   
     for (int i = 0; i < n; i ++ )
     {
         for (int j = 0; j < m; j ++ )
