@@ -35,7 +35,7 @@ Especially when $A$ is a vector $a$ we have $P=\frac{aa^T}{a^Ta}$, then $Pb=\fra
 
 **Proof:**
 
-$Ax$ is a vector in the column space of $A$, denoted as $C(A)$then we must have $Ax-b$ that is perpendicular to the $C(A)$, so $Ax-b$ is in $N(A^T)$:
+$Ax$ is a vector in the column space of $A$, denoted as $C(A)$ then we must have $Ax-b$ that is perpendicular to the $C(A)$, so $Ax-b$ is in $N(A^T)$:
 
 $$\begin{align}
 A^T(Ax-b)&=0\\

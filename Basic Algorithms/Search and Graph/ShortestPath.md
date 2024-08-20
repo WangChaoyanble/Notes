@@ -1,6 +1,6 @@
 # Simple Dijkstra
 Simple dijkstra could calculate the shortest path from the **starting point to every other point**. Below are the steps:
-1. **Initialize $dist[1]=0, dist[i]=+\infty,i\gt 1$**. *$dist[i]$ represents the shortest path from the starting point $1$ to the point $i$.*
+1. **Initialize $dist[1]=0, dist[i]=+\infty,i\gt 1$**. *$dist[i]$    represents the shortest path from the starting point $1$ to the point $i$.*
 2. **Add point $1$ to set $S$**. *$S$ is a set of points that the shortest path have been confirmed*. Then repeat the following steps $n-1$ times:
    1. Find the mininum $dist[t]$ where $t$ is not in $S$.
    2. Add $t$ to set $S$.
