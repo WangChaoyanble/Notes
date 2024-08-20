@@ -5,37 +5,37 @@
     - $\sum_{i=1}^{n}\lambda_i=\sum_{i=1}^{n}a_{ii}$
     - $\prod_{i=1}^n\lambda_i=det(A)$
   - 特征向量性质
-    - $k$重特征值最多有$k$个线性无关的特征向量
-    - $A\xi_1=\lambda_1 \xi_1,A\xi_2=\lambda_2 \xi_2,\lambda_1\neq\lambda_2$，那么$\xi_1$和$\xi_2$线性无关
-    - $A\xi_1=\lambda \xi_1,A\xi_2=\lambda \xi_2$，那么$A(k_1\xi_1+k_2\xi_2)=\lambda (k_1\xi_1+k_2\xi_2)$
+    - $k$重特征值最多有 $k$个线性无关的特征向量
+    - $A\xi_1=\lambda_1 \xi_1,A\xi_2=\lambda_2 \xi_2,\lambda_1\neq\lambda_2$，那么 $\xi_1$和 $\xi_2$线性无关
+    - $A\xi_1=\lambda \xi_1,A\xi_2=\lambda \xi_2$，那么 $A(k_1\xi_1+k_2\xi_2)=\lambda (k_1\xi_1+k_2\xi_2)$
 - 矩阵相似
-  - 定义：存在可逆矩阵$P$，使得$P^{-1}AP=B$，那么称$A$相似于$B$，记为$A\sim B$
-  - 性质：若$A\sim B$，那么有：
-    - $r(A)=r(B);|A|=|B|;|\lambda E-A|=|\lambda E-B|$;$A$和$B$有相同特征值
-    - $f(A)\sim f(B)$，其中$f$是多项式
-    - 若$A$可逆，那么$A^{-1}\sim B^{-1}$
+  - 定义：存在可逆矩阵 $P$，使得 $P^{-1}AP=B$，那么称 $A$相似于 $B$，记为 $A\sim B$
+  - 性质：若 $A\sim B$，那么有：
+    - $r(A)=r(B);|A|=|B|;|\lambda E-A|=|\lambda E-B|$; $A$和 $B$有相同特征值
+    - $f(A)\sim f(B)$，其中 $f$是多项式
+    - 若 $A$可逆，那么 $A^{-1}\sim B^{-1}$
     - $A^T\sim B^T$
-    - 若$A$可逆，那么$A^*\sim B^*$
+    - 若 $A$可逆，那么 $A^*\sim B^*$
 - 矩阵相似对角化
-  - 定义：对于$n$阶矩阵$A$，若存在可逆矩阵$P$，使得$P^{-1}AP=\Lambda$，其中$\Lambda$为对角矩阵，称$A$可相似对角化，$\Lambda$是$A$的相似标准形
-  - $n$阶矩阵$A$可对角化条件
-    - $A$可相似对角化$\Leftrightarrow$ $A$有$n$个线性无关的特征向量
-    - $A$可相似对角化 $\Leftrightarrow$ $A$对应于每个$k_i$重特征值都有$k_i$个线性无关的特征向量
-    - $A$有$n$个不同的特征值 $\Rightarrow$ $A$可相似对角化
+  - 定义：对于 $n$阶矩阵 $A$，若存在可逆矩阵 $P$，使得 $P^{-1}AP=\Lambda$，其中 $\Lambda$为对角矩阵，称 $A$可相似对角化， $\Lambda$是$A$的相似标准形
+  - $n$阶矩阵 $A$可对角化条件
+    - $A$可相似对角化 $\Leftrightarrow$ $A$有 $n$个线性无关的特征向量
+    - $A$可相似对角化 $\Leftrightarrow$ $A$对应于每个 $k_i$重特征值都有 $k_i$个线性无关的特征向量
+    - $A$有 $n$个不同的特征值 $\Rightarrow$ $A$可相似对角化
     - $A$是实对称矩阵 $\Rightarrow$ $A$可相似对角化
 - 实对称矩阵必可以相似于对角矩阵
-  - 实对称矩阵$A$：
+  - 实对称矩阵 $A$：
     - 不同特征值对应的特征向量相互正交
-    - 必有$n$个线性无关的特征向量
-    - 存在正交矩阵$Q$，使得$Q^{-1}AQ=Q^{T}AQ=\Lambda$，其中$\Lambda$为对角矩阵
+    - 必有 $n$个线性无关的特征向量
+    - 存在正交矩阵 $Q$，使得 $Q^{-1}AQ=Q^{T}AQ=\Lambda$，其中 $\Lambda$为对角矩阵
 # 二次型
 - 定义与矩阵表示
-  - 定义：$n$元变量二次齐次多项式称为二次型
-  - 矩阵表示：$f(x)=x^TAx$，$A$为对称矩阵
+  - 定义： $n$元变量二次齐次多项式称为二次型
+  - 矩阵表示： $f(x)=x^TAx$， $A$为对称矩阵
 - 合同变换、标准型
-  - 线性变换：$x=Cy$，则$f(x)=x^TAx=y^T(C^TAC)y=g(y)$
-  - 矩阵合同：$B=C^TAC$（$C$可逆），则$A$与$B$合同，即$A\simeq B$
-  - 二次型的标准型、规范型：任意实对称矩阵$A$，一定存在正交矩阵$Q$，使得：$Q^{-1}AQ=Q^TAQ=\Lambda$
+  - 线性变换： $x=Cy$，则 $f(x)=x^TAx=y^T(C^TAC)y=g(y)$
+  - 矩阵合同： $B=C^TAC$（$C$可逆），则 $A$与 $B$合同，即 $A\simeq B$
+  - 二次型的标准型、规范型：任意实对称矩阵 $A$，一定存在正交矩阵 $Q$，使得： $Q^{-1}AQ=Q^TAQ=\Lambda$
     - 配方法(化为标准型)
     - 正交变换(化为标准型)
 - 惯性定理
@@ -46,10 +46,10 @@
   - $\forall x\neq 0,f(x_1,x_2,...,x_n)=x^TAx>0$
   - 二次型正定的充要条件
     - $\iff$ $\forall x \neq 0,f(x)=x^TAx>0$
-    - $\iff$ 正惯性指数$p=n$
-    - $\iff$ 存在可逆矩阵$D$，$A=D^TD$
+    - $\iff$ 正惯性指数 $p=n$
+    - $\iff$ 存在可逆矩阵 $D$， $A=D^TD$
     - $\iff$ $A\simeq E$
-    - $\iff$ $A$的特征值都大于$0$
+    - $\iff$ $A$的特征值都大于 $0$
     - $\iff$ $A$的全部顺序主子式大于零
   - 二次型正定的必要条件
     - $a_{ii}>0$
