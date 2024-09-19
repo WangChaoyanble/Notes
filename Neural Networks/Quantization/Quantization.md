@@ -98,17 +98,35 @@ So the quantizer itself can also be jointly trained with the model parameters.(l
 
 ### Fine-tuning Methods
 
-It is often necessary to adjust the parameters in the NN after quantization. It can be performed by:
+It is often necessary to adjust the parameters in the NN after quantization. It can be performed by two way below:
+![alt text](../../assets/MarkdownImg/image-12.png)
 - Retraining the model: QuantizationAware Training (QAT)
   
-  Quantization may introduce a perturbation to the trained model parameters, and this can push the model away from the point to which it had converged when it was trained with floating point precision. 
+  - Quantization may introduce a perturbation to the trained model parameters, and this can push the model away from the point to which it had converged when it was trained with floating point precision. 
   
-  It is possible to address this by re-training the NN model with quantized parameters so that the model can converge to a point with better loss.
+  - It is possible to address this by re-training the NN model with quantized parameters so that the model can converge to a point with better loss.
 
-  QAT: the usual forward and backward pass are performed on the quantized model in floating point, but the model parameters are quantized after each gradient update
+  - QAT: the usual forward and backward pass are performed on the quantized model in floating point, but the model parameters are quantized after each gradient update.
+  - How the the non-differentiable quantization operator is treated: using Straight Through Estimator (STE).
+  - Disadvantage: the computational cost of re-training the NN model.
+  ![alt text](../../assets/MarkdownImg/image-11.png)
 - Without re-training: Post-Training Quantization (PTQ).
+  -  For low-precision quantization, with a lower cost compared to QAT.
+  - Multiple approaches have been proposed to mitigate the accuracy degradation
 
-![alt text](../../assets/MarkdownImg/image-11.png)
+- Zero-shot Quantization: To achieve minimal accuracy degradation after quantization, we need access to the entire of a fraction of training data. Access to the original training data is not possible during the quantization procedure. Several methods are prospered to address the problem.
 
 
 ### Stochastic Quantization
+
+The high level intuition has been that the stochastic quantization may allow a NN to explore more as  **small weight updates may not lead to any weight change, as the rounding operation may always return the same weights**. 
+
+However, enabling a **stochastic rounding** may provide the NN an opportunity to escape, thereby updating its parameters.
+
+In short, **stochastic quantization maps the floating number up or down with a probability associated to the magnitude of the weight update.**
+
+
+## Mostly Used: Quantization Below 8 Bits
+### Simulated and Integer-only Quantization
+- Simulated quantization: the quantized model parameters are stored in low-precision, but the operations are carried out with floating point arithmetic.
+  ![alt text](../../assets/MarkdownImg/image-13.png)
