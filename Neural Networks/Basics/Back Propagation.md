@@ -25,6 +25,8 @@ Given the definition:
 
 
 ## Back Propagation
+A network with n layers: $1\le l \le L$
 - Output layer error: $\delta_j^L=\frac{\partial C}{\partial z_j^L}=\frac{\partial C}{\partial a_j^L}\frac{\partial a_j^L}{\partial z_j^L}=\frac{\partial C}{\partial a_j^L}\sigma '(z_j^L)$
   
   In matrix form: $\delta^L=\nabla _aC\odot \sigma'(z^L)$
+- $\delta^l=((w^{l+1})^T\delta^{l+1})\odot\sigma'(z^l)$

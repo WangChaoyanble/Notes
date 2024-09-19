@@ -41,3 +41,80 @@ The function of STE is defined as:
  $$clip(x, −1, 1) = max(−1, min(1, x))$$ 
 
 
+```python
+import torch
+import torch.nn as nn
+import math
+from torch.autograd import Function
+import torch.nn.functional as F
+from torchvision import datasets, transforms
+
+class Binarize(Function):
+    @staticmethod
+    def forward(ctx, input):
+        ctx.save_for_backward(input)
+        return torch.sign(input + 1e-20)
+    
+    @staticmethod
+    def backward(ctx, grad_output):
+        input = ctx.saved_tensors[0]
+        grad_output[input > 1] = 0
+        grad_output[input < -1] = 0
+        return grad_output
+
+class BinarizedLinear(nn.Module):
+    def __init__(self, in_features, out_features, binarize_input=True):
+        super(BinarizedLinear, self).__init__()
+        self.binarize_input = binarize_input
+        self.weight = nn.Parameter(torch.Tensor(out_features, in_features))
+        nn.init.kaiming_uniform_(self.weight, a=math.sqrt(5))
+        
+    def forward(self, x):
+        if self.binarize_input:
+            x = Binarize.apply(x)    
+        w = Binarize.apply(self.weight)
+        out = torch.matmul(x, w.t())
+        return out
+
+
+model = nn.Sequential(
+    BinarizedLinear(784, 2048, False),
+    nn.BatchNorm1d(2048),
+    BinarizedLinear(2048, 2048),
+    nn.BatchNorm1d(2048),
+    BinarizedLinear(2048, 2048),
+    nn.Dropout(0.5),
+    nn.BatchNorm1d(2048),
+    nn.Linear(2048, 10)
+)
+
+optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+
+scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=40, gamma=0.1)
+
+
+train_batch_size = 100  #60000 data in total, 600 batches, 100 batch size
+test_batch_size = 100  
+# Train Set
+train_loader = torch.utils.data.DataLoader(
+    datasets.MNIST(
+        './data',train=True,download=True,  
+        transform=transforms.Compose([
+            transforms.ToTensor(),  
+            transforms.Normalize(0.5,0.5) #Regularization
+        ])
+    ),
+    batch_size = train_batch_size, shuffle=True  #Shuffle
+)
+# Test Set
+test_loader = torch.utils.data.DataLoader(
+    datasets.MNIST(
+        './data',train=False,download=True,
+        transform=transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(0.5,0.5)
+        ])
+    ),
+    batch_size = test_batch_size, shuffle=False
+)
+```
