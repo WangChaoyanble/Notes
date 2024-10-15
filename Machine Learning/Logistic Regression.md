@@ -10,11 +10,11 @@ Function $h_\theta(x)$ denotes the probability that $x$ is classified as positiv
 In logistic regression, when $h_\theta(x)>=0.5$ , we predict $y=1$ , when $h_\theta(x)<0.5$ , $y=0$ .
 
 ## Loss Function
-The cost function is:
+The loss function is:
 
 $Cost(h_\theta(x),y)=-ylog(h_\theta(x))-(1-y)log(1-h_\theta(x))$
 
-So that the loss function:
+So that the cost function:
 
 $J(\theta)=\frac{1}{m}\sum_{i=1}^mCost(h_\theta(x_i),y_i)$ 
 
