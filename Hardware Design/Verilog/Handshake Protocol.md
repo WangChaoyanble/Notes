@@ -4,81 +4,96 @@
 module send(
     input clk,
     input rst_n,
-    output [7:0] reg data_out,
 
+    input ready,
     output reg valid,
-    input ready
+
+    output reg [7:0] data
 );
-reg [7:0] data_reg;
-reg processed;
-integer data_count=0;
-
-always @(posedge clk or negedge rst_n) begin
-    if(rst_n) begin
-        data_out<=0;
-        valid<=0;
-        data_reg<=0;
-        data_valid<=0;
-        data_count<=0;
-    end
-
-    else begin
-        //data is valid and receiver is ready to receive
-        // set data out and valid
-        if(processed && ready) begin
-            data_out<=data_reg;
-            valid<=1'b1;
-            processed<=0;
-            data_count<=data_count+1;
-        end
-        //if data is not valid
-        if(~processed) begin
-            data_reg<=data_count;
-            processed<=1'b1;
-            
-        end
-
-    end
-end
-endmodule
-
-module receiver(
-    input clk,
-    input rst_n,
-    input [7:0] data_in;
-
-    output reg ready,
-    input valid
-);
-
-reg[7:0] data[127:0];
-reg processed;
+reg [7:0]data_reg;
 integer i=0;
 always @(posedge clk or negedge rst_n) begin
-    if(rst_n) begin
-        ready<=0;
-        data_out<=0;
-        processed<=0;
-        for (integer i=0;i<127;i=i+1) begin
-            data[i]<=0;
-        end
+
+    if(!rst_n) begin
+        valid<=0;
+        data_reg<=0;
+        data<=0;
     end
-    else begin    //processed and sending data is valid
-        if(valid && processed) begin
-            data[i]<=data_in; //receive data
-                
-            processed<=0;   //not processed
-        end
-
-        if(~processed) begin
+    else begin
+        if(valid && ready) begin 
+        //data is sending, first set valid 0, then we can do other things
+        //remember we need to keep the out data stable, so don't do andy thing to it
+            valid<=0;
             i<=i+1;
-            ready<=1'b1;
-            process<=1'b1;
         end
-
+        if(!valid) begin   
+            //preparing data and set valid 1
+            data<=i;
+            valid<=1'b1;
+        end
     end
 end
+endmodule
+
+module receive(
+    input clk,
+    input rst_n,
+
+    input valid,
+    input [7:0] data,
+    output reg ready
+);
+reg [7:0] data_reg[127:0];
+integer j=0;
+always @(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        ready<=0;
+        for(integer i=0;i<128;i=i+1) begin
+            data_reg[i]<=0;
+        end
+    end
+    else begin
+        if(valid && ready) begin //storing data, set ready 0
+            data_reg[j]<=data;
+            ready<=0;
+        end
+        if(!ready) begin  //preparing to receiving data(like storage for the data), then set ready 1
+            j<=j+1;
+            ready<=1;
+        end
+    end
+
+end
+
 
 endmodule
+
+`timescale 1ns / 1ps
+
+module test(
+
+    );
+    wire valid;
+    wire ready;
+    wire [7:0] data;
+    reg clk;
+    reg reset;
+    send moduleA (.clk(clk),.data(data),.rst_n(reset),.ready(ready),.valid(valid));
+    receive moduleB (.clk(clk),.data(data),.rst_n(reset),.ready(ready),.valid(valid));
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10ns周期
+    end
+
+    // 复位序列
+    initial begin
+        reset = 0;
+        #10;
+        reset = 1;
+        #200;
+        
+    end
+endmodule
+
 
 ```
