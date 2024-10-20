@@ -1,3 +1,12 @@
+Confusion matrix:
+
+|  | Predicted Positive | Predicted Negative |
+| :--: | :--: | :--: |
+| Actual Positive | True Positive (TP) | False Negative (FN) |
+| Actual Negative | False Positive (FP) | True Negative (TN) |
+
+
+
 - Accuracy: Accuracy provides the proportion of correctly classified instances.
   
   $Accuracy = \frac{True \, Positives + True \, Negatives}{Total}$  
@@ -10,3 +19,9 @@
 - F1 Score: F1 score is the harmonic mean of precision and recall.
     
     $F1 \space Score = 2 * \frac{Precision * Recall}{Precision + Recall}$
+
+Summary：
+- Accuracy gives an overall measure of correctness but can be misleading if the classes are imbalanced.
+- Precision focuses on the quality of positive predictions 
+- Recall emphasizes the completeness of positive cases.
+- F1 Score balances precision and recall, providing a single metric to assess performance.
