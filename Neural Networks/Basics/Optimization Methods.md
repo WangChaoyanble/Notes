@@ -40,15 +40,18 @@ $$f(\textbf{x})=A\textbf{x}+b$$
 If $f$ is derivable at $\textbf{x}^*$ , we have:
 
 
-$$\lim_{||\textbf{x}-\mathbf{x}^*||\rightarrow 0 }\frac{||f(\textbf{x})-(\textbf{A}(\textbf{x}-\textbf{x}^*)+\textbf{b})||}{||\textbf{x}-\textbf{x}^*||}=0$$
+
+![alt text](../../assets/MarkdownImg/image-52.png)
 
 To meet the limitation , $b=f(\textbf{x}^*)$ , so the affine function :
 
-$$f_{affine} (\textbf{x}) = f (\textbf{x}^{*}) + A (\textbf{x} - \textbf{x}^{*})$$
+![alt text](../../assets/MarkdownImg/image-51.png)
 
 Select a coordinate axis $i$ ,then the limitation at this coordinate:
 
 $$\lim _ { \alpha \rightarrow 0 } \left| \left| \frac { f ( x ^ { * } + \alpha e _ { i } ) - f ( x ^ { * } ) } { \alpha } - A e _ { i } \right| \right|$$
+
+We can easily find that the $ith$ colomn of $A$
 
 
 
