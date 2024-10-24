@@ -42,3 +42,5 @@ Some signals of AXI4-Stream:
 - tid
 - tdest
 - tuser
+
+准备地址，发送地址，接受地址，准备数据

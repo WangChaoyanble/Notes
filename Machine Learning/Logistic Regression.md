@@ -20,7 +20,7 @@ $J(\theta)=\frac{1}{m}\sum_{i=1}^mCost(h_\theta(x_i),y_i)$
 
 $m$ is the number of samples for training.
 
-We denote: 
+<!-- We denote: 
 
 ${X}=[x_1 \space x_2... \space x_m]^T$
 
@@ -28,5 +28,5 @@ $y=[y_1,y_2,...,y_m]^T$
 
 So we have: $H(X)=g(X\theta)$ , function $g$ is applied to every element of $X\theta$ .
 
-$Cost(H(X),y)=$
+$Cost(H(X),y)=$ -->
 

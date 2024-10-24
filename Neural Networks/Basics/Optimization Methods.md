@@ -44,7 +44,7 @@ $$\lim_{||\textbf{x}-\mathbf{x}^*||\rightarrow 0 }\frac{||f(\textbf{x})-(\textbf
 
 To meet the limitation , $b=f(\textbf{x}^*)$ , so the affine function :
 
-$$f_{affine} (\textbf{x}) = f (\textbf{x}^*) + A (\textbf{x} - \textbf{x}^*)$$
+$$f_{affine} (\textbf{x}) = f (\textbf{x}^{*}) + A (\textbf{x} - \textbf{x}^{*})$$
 
 Select a coordinate axis $i$ ,then the limitation at this coordinate:
 
