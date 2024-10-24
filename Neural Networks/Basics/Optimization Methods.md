@@ -40,8 +40,7 @@ $$f(\textbf{x})=A\textbf{x}+b$$
 If $f$ is derivable at $\textbf{x}^*$ , we have:
 
 
-$$\lim _{||\textbf{x}-\textbf{x^*}|| \rightarrow
- 0} \frac{||f(\textbf{x})-(\textbf{A}(\textbf{x}-\textbf{x^*})+\textbf{b})||}{||\textbf{x}-\textbf{x^*}||}=0$$
+$$\lim_{||\textbf{x}-\mathbf{x}^*||\rightarrow 0 }\frac{||f(\textbf{x})-(\textbf{A}(\textbf{x}-\textbf{x}^*)+\textbf{b})||}{||\textbf{x}-\textbf{x}^*||}=0$$
 
 To meet the limitation , $b=f(\textbf{x}^*)$ , so the affine function :
 
