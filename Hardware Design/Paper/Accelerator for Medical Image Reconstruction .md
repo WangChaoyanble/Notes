@@ -33,7 +33,7 @@ Implicit neural representation(INR), INR models an image as a continuous functio
 - Implicit neural representation based self-supervised learning model (IREM):
   
   - Reconstruct arbitrary high-resolution (HR) isotropic 3D MR images from multiple anisotropic low-resolution (LR) MR scans with thick slices.
-  - Model the observed LR image I_{lr} and the desired HR image I_{hr} by the same continuous implicit voxel function defined as : $I = F_θ (x)$
+  - Model the observed LR image $I_{lr}$ and the desired HR image $I_{hr}$ by the same continuous implicit voxel function defined as : $I = F_θ (x)$
   
     $x = (x, y, z)$ is any 3D voxel spatial coordinate and $I$ is the voxel intensity at the position $x$ in the image.
 - Extend IREM to propose an INR-based algorithm:
@@ -73,5 +73,53 @@ Implicit neural representation(INR), INR models an image as a continuous functio
 ## Design Analysis
 Algorithm ：
 ![alt text](../../assets/MarkdownImg/image-43.png)
+- $N_X$ : total number of voxels
+- $N_{layer}$ : number of layers, 15
+- $N_{in,l},N_{out,l}$ :input and output neurons of lth layer
 
 ### Computational Flow Analysis
+- Loop Unrolling 
+  - Voxel-level unrolling. For the computation of a certain layer, we can process in parallel the matrix-vector multiplication between the feature vectors corresponding to multiple voxels and the weights of that layer. 
+  - Height loop unrolling. The multiplication between the same neuron with multiple weights that corresponds to different output neurons can be processed concurrently
+  - Width loop unrolling. The computation between weights and input neurons that corresponds to the same output neurons can be processed in parallel.
+  - Co-designed With Memory Access :
+    ![alt text](../../assets/MarkdownImg/image-44.png)
+
+- Loop Tiling
+    ![alt text](../../assets/MarkdownImg/image-45.png)
+    Split computation into multiple parts, so that it can fit the given on chip memory and other resources.
+
+## Coordinates Gereration
+![alt text](../../assets/MarkdownImg/image-46.png)
+we can input the coordinates of the intersection point $(xo, yo, zo)$ and calculate all other remaining coordinates within the accelerator. For example, the coordinates of voxels of the Axial scan plane in Fig. 6(b) can be generated as :
+
+$$x_i = x_{left} + cnt1 × \Delta \\ yi = yo \\ z_i = z_{bottom} + cnt2 × \Delta z$$
+
+## Achitecture of the Accelerator
+![alt text](../../assets/MarkdownImg/image-47.png)
+
+- **The FFM Engine**: implement the mapping from input coordinates to high-dimensional encoded features
+- **The Network Computation Engine** : generate the final voxel intensities through network evaluations
+- **Finite State Machine (FSM)** : top controller to control the execution of the algorithm according to the external control signals : 
+  - Parameter loading and configuration setting 
+  - Reconstruction start
+- **Two FIFO Modules** Connect the accelerator to the external memories 
+  - FIFO_IN is used to load the Fourier feature matrix and network parameters into the accelerator  
+  - FIFO_OUT is responsible for writing out the generated voxel intensities.
+
+### Network Computation Engine
+![alt text](../../assets/MarkdownImg/image-48.png)
+- Components
+  - 64 PE
+  - 64 partial sum accumulation (PSA) blocks
+  - A ReLU & Quantization unit 
+  - Four memory blocks
+    - Weight Memory : 1.5MB
+    - IMEM
+    - MEMA,MEMB : Designed to work in an exchangeable manner
+- Data flow in PEs
+  ![alt text](../../assets/MarkdownImg/image-49.png)
+
+### Fourier Mapping Engine
+
+
