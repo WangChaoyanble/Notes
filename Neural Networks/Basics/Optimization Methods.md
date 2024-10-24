@@ -40,11 +40,12 @@ $$f(\textbf{x})=A\textbf{x}+b$$
 If $f$ is derivable at $\textbf{x}^*$ , we have:
 
 
-$$\lim_{||\mathbf{x}-\mathbf{x^*}|| \to 0} \frac{||f(\mathbf{x})-(\mathbf{A}(\mathbf{x}-\mathbf{x^*})+\mathbf{b})||}{||\mathbf{x}-\mathbf{x^*}||}=0$$
+$$\lim _{||\textbf{x}-\textbf{x^*}|| \rightarrow
+ 0} \frac{||f(\textbf{x})-(\textbf{A}(\textbf{x}-\textbf{x^*})+\textbf{b})||}{||\textbf{x}-\textbf{x^*}||}=0$$
 
 To meet the limitation , $b=f(\textbf{x}^*)$ , so the affine function :
 
-$$f_{affine} (\mathbf{x}) = f (\mathbf{x}^*) + A (\mathbf{x} - \mathbf{x}^*)$$
+$$f_{affine} (\textbf{x}) = f (\textbf{x}^*) + A (\textbf{x} - \textbf{x}^*)$$
 
 Select a coordinate axis $i$ ,then the limitation at this coordinate:
 
