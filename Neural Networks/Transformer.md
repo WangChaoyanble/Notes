@@ -1,20 +1,5 @@
 ![alt text](../assets/MarkdownImg/image-50.png)
-Embedded matrices:
 
-$$X = \begin{bmatrix}
-x_1 \\
-x_2 \\
-\vdots \\
-x_n
-\end{bmatrix}$$
-
-Each $x$ represents a embedded row vector(a word), the length of $x$ is $m$. So the size of $X$ is $n \times m$ .
-
-Calculate K,Q,V matrices:
-
-$$
-Q = X W_Q, \quad K = X W_K, \quad V = X W_V
-$$
 
 
 ### 1. Input to the Encoder
