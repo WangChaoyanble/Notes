@@ -54,6 +54,23 @@ $$\lim _ { \alpha \rightarrow 0 } \left| \left| \frac { f ( x ^ { * } + \alpha e
 We can easily find that the $ith$ colomn of $A$
 
 
+# Optimality Conditions for Constrained Problems
+
+Constrained Problems:
+
+$$minf(\textbf{x})$$
+
+Subject to:
+
+$$s.t.\ s_i(\mathbf{x}) \geq 0 \quad i = 1, 2, \dots, m \\
+h_j(\mathbf{x}) = 0 \quad j = 1, 2, \dots, l
+$$
+
+
+
+
+
+
 
 
 
