@@ -112,8 +112,6 @@ After the feed-forward network, the process is similar to the multi-head attenti
 
 2. **Layer Normalization**: Finally, apply layer normalization again:
    
-   $$
-   \text{LayerNorm}_2\left(\text{FFN Output with Residual}\right) = \frac{\text{FFN Output with Residual} - \mu}{\sigma} \cdot \gamma + \beta
-   $$
+   $$\text{LayerNorm}_2\left(\text{FFN Output with Residual}\right) = \frac{\text{FFN Output with Residual} - \mu}{\sigma} \cdot \gamma + \beta$$
 
 
