@@ -41,7 +41,7 @@ Each row of $X$ is a token's embedded representation.
 
 After the multi-head attention output is computed, the next step is to apply the **residual connection** followed by **layer normalization**.
 
-1. **Residual Connection**: The original input $ X $ is added to the multi-head attention output:
+1. **Residual Connection**: The original input $X$ is added to the multi-head attention output:
    
    $$\text{Attention Output with Residual} = \text{Multi-Head Output} + X$$
    
